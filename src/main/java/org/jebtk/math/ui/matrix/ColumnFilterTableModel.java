@@ -47,12 +47,12 @@ public class ColumnFilterTableModel extends ModernTableModel {
   /**
    * The use.
    */
-  private List<Boolean> use = new ArrayList<Boolean>();
+  private final List<Boolean> mUse = new ArrayList<>();
 
   /**
    * The columns.
    */
-  private List<Indexed<Integer, String>> mColumns;
+  private final List<Indexed<Integer, String>> mColumns;
 
   /**
    * Instantiates a new column filter table model.
@@ -64,7 +64,7 @@ public class ColumnFilterTableModel extends ModernTableModel {
     mColumns = columns;
 
     for (int i = 0; i < columns.size(); ++i) {
-      use.add(true);
+      mUse.add(true);
     }
 
     fireDataChanged();
@@ -75,6 +75,7 @@ public class ColumnFilterTableModel extends ModernTableModel {
    * 
    * @see org.abh.common.ui.ui.dataview.ModernDataModel#getColumnCount()
    */
+  @Override
   public final int getColCount() {
     return HEADER.length;
   }
@@ -110,7 +111,7 @@ public class ColumnFilterTableModel extends ModernTableModel {
   public final Object getValueAt(int row, int col) {
     switch (col) {
     case 0:
-      return use.get(row);
+      return mUse.get(row);
     case 1:
       return mColumns.get(row).getValue();
     }
@@ -124,6 +125,7 @@ public class ColumnFilterTableModel extends ModernTableModel {
    * @see org.abh.common.ui.ui.dataview.ModernDataGridModel#getIsCellEditable(int,
    * int)
    */
+  @Override
   public final boolean getIsCellEditable(int row, int col) {
     return col == 0;
   }
@@ -140,7 +142,7 @@ public class ColumnFilterTableModel extends ModernTableModel {
       return;
     }
 
-    use.set(row, (Boolean) value);
+    mUse.set(row, (Boolean) value);
 
     fireDataChanged();
   }
@@ -162,8 +164,8 @@ public class ColumnFilterTableModel extends ModernTableModel {
    */
   @Override
   public final void clear() {
-    for (int i = 0; i < use.size(); ++i) {
-      use.set(i, false);
+    for (int i = 0; i < mUse.size(); ++i) {
+      mUse.set(i, false);
     }
 
     fireDataChanged();

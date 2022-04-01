@@ -50,7 +50,7 @@ public class IdOrderTableModel extends ModernTableModel {
   /**
    * The member ids.
    */
-  private List<Indexed<Integer, String>> mIds;
+  private final List<Indexed<Integer, String>> mIds;
 
   /**
    * Instantiates a new id order table model.
@@ -102,6 +102,7 @@ public class IdOrderTableModel extends ModernTableModel {
    * 
    * @see org.abh.common.ui.ui.dataview.ModernDataModel#getValueAt(int, int)
    */
+  @Override
   public final Object getValueAt(int row, int col) {
     switch (col) {
     case 0:

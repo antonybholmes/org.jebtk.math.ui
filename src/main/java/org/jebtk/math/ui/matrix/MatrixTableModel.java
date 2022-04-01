@@ -43,7 +43,7 @@ public class MatrixTableModel extends ModernTableModel implements MatrixEventLis
   /**
    * The member matrix.
    */
-  private DataFrame mMatrix;
+  private final DataFrame mMatrix;
 
   /** The m row anns. */
   protected int mRowAnns = 0;

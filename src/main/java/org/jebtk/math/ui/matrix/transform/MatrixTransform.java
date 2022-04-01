@@ -62,7 +62,7 @@ public class MatrixTransform implements MatrixTransformEventProducer {
   /**
    * The listeners.
    */
-  private MatrixTransformEventListeners mListeners = new MatrixTransformEventListeners();
+  private final MatrixTransformEventListeners mListeners = new MatrixTransformEventListeners();
 
   /**
    * Instantiates a new matrix transform.
